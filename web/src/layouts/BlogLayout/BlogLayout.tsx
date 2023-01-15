@@ -1,16 +1,26 @@
+import styled from 'styled-components'
+
 import { Link, routes } from '@redwoodjs/router'
 
 type BlogLayoutProps = {
   children?: React.ReactNode
 }
 
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`
+
+
+
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   return (
     <>
       <header>
-        <h1>
+        <Title>
           <Link to={routes.home()}>Redwood Blog</Link>
-        </h1>
+        </Title>
         <nav>
           <ul>
             <li>
