@@ -12,8 +12,6 @@ const Title = styled.h1`
   color: palevioletred;
 `
 
-
-
 const BlogLayout = ({ children }: BlogLayoutProps) => {
   return (
     <>
@@ -28,6 +26,9 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
             </li>
             <li>
               <Link to={routes.about()}>About</Link>
+            </li>
+            <li>
+              <Link to={routes.contact()}>Contact</Link>
             </li>
           </ul>
         </nav>
