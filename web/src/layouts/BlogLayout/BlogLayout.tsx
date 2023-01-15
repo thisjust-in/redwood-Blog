@@ -1,24 +1,31 @@
-import styled from 'styled-components'
-
+import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
 type BlogLayoutProps = {
   children?: React.ReactNode
 }
 
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;
-`
-
 const BlogLayout = ({ children }: BlogLayoutProps) => {
+  const { isAuthenticated, currentUser, logOut } = useAuth()
+
   return (
     <>
       <header>
-        <Title>
-          <Link to={routes.home()}>Redwood Blog</Link>
-        </Title>
+        <div className="flex-between">
+          <h1>
+            <Link to={routes.home()}>Redwood Blog</Link>
+          </h1>
+          {isAuthenticated ? (
+            <div>
+              <span>Logged in as {currentUser.email}</span>{' '}
+              <button type="button" onClick={logOut}>
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link to={routes.login()}>Login</Link>
+          )}
+        </div>
         <nav>
           <ul>
             <li>
